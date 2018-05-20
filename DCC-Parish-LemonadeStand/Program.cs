@@ -10,6 +10,12 @@ namespace DCC_Parish_LemonadeStand
     {
         static void Main(string[] args)
         {
+            Game g = new Game();
+            g.SetupGame();
+
+            
+
+            Console.ReadLine();
         }
     }
 }

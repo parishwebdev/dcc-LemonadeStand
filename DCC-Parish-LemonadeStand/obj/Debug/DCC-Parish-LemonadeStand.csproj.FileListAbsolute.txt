@@ -1,0 +1,7 @@
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\DCC-Parish-LemonadeStand.exe.config
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\DCC-Parish-LemonadeStand.exe
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\DCC-Parish-LemonadeStand.pdb
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.csprojResolveAssemblyReference.cache
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.csproj.CoreCompileInputs.cache
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.exe
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.pdb

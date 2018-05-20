@@ -8,5 +8,7 @@ namespace DCC_Parish_LemonadeStand
 {
     class Day
     {
+        //Weather weather = new Weather();
+
     }
 }

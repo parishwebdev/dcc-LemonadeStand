@@ -8,5 +8,12 @@ namespace DCC_Parish_LemonadeStand
 {
     class Customer
     {
+
+                    //all of the var(s)
+        public bool BuyLemonade()
+        {
+
+            return true;
+        }
     }
 }
