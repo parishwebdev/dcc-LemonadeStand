@@ -8,7 +8,7 @@ namespace DCC_Parish_LemonadeStand
 {
     class Game
     {
-        public Random rTemp;
+        public Random rand;
         private Player player = new Player();
         private List<int> numberGameDays = new List<int> { 7, 14, 30 };
         private string gameInstructions = "Instruction for game in beginning";
@@ -24,7 +24,7 @@ namespace DCC_Parish_LemonadeStand
 
         public Game()
         {
-            rTemp = new Random();
+            rand = new Random();
         }
 
         public void SetupGame()
