@@ -29,5 +29,15 @@ namespace DCC_Parish_LemonadeStand
 
             return result;
         }
+        public static void DisplayPlayerInventory(List<Ingredient> inventory)
+        {
+            string result = "Inventory: ";
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                result += inventory[i].IngredientName + " - " + inventory[i].IngredientQty + " "; 
+            }
+            OutputText(result);
+        }
+
     }
 }

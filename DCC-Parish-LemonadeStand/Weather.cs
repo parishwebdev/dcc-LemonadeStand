@@ -59,6 +59,28 @@ namespace DCC_Parish_LemonadeStand
         }
         public string CurrentCondition { get { return currentCondition; } set{ currentCondition = value; } }
 
+        private List<Weather> forecast;
+        public List<Weather> Forecast
+        {
+            get
+            {
+                return forecast;
+            }
+            set
+            {
+                forecast = value;
+            }
+        }
+        private List<Weather> actualWeather;
+        public List<Weather> ActualWeather
+        {
+            get
+            {
+                return actualWeather;
+            }
+        }
+
+
         public void SetCurrentTemp(double minTemp, double maxTemp, Random rTemp)
         {
             currentTemp = rTemp.Next((int)minTemp, (int)maxTemp);
@@ -75,32 +97,8 @@ namespace DCC_Parish_LemonadeStand
 
         //Forecast
         /*
-         Public <weather> weekForecast;
-         Public void CreateInitialWeather(){};
-         Public void GenerateForecast();
          Public void GetCurrentDayForecast(){ };
-         Public void GetNextDayForecast(){ };
-         Public void GetNextSevenDayForecast(){};
           */
-
-        private List<Weather> forecast;
-        public List<Weather> Forecast {
-            get {
-                return forecast;
-            }
-            set
-            {
-                forecast = value;
-            }
-        }
-        private List<Weather> actualWeather;
-        public List<Weather> ActualWeather
-        {
-            get
-            {
-                return actualWeather;
-            }
-        }
 
         public void CreateInitalWeather(int numDays,Random rTemp)
         {
@@ -123,7 +121,6 @@ namespace DCC_Parish_LemonadeStand
             }
             
         }
-
         public void AlterTempForForecast(Random rand, Weather w)
         {
             int variation = rand.Next(0, 3);
@@ -164,6 +161,13 @@ namespace DCC_Parish_LemonadeStand
                 default:
                     w.CurrentCondition = CurrentCondition;
                     break;
+            }
+        }
+        public void DisplayForecastByNumDays(int numDaysToDisplay)
+        {
+            for (int j = 0; j < numDaysToDisplay; j++)
+            {
+                UserInterface.OutputText(j + 1 + ") " + Forecast[j].CurrentCondition + " " + Forecast[j].CurrentTemp);
             }
         }
 

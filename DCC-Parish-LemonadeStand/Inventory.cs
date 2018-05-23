@@ -8,30 +8,36 @@ namespace DCC_Parish_LemonadeStand
 {
     class Inventory
     {
-        private int sugarStockQty;
-        private int lemonStockQty;
-        private int icecubeStockQty;
-        private int cupsStockQty;
+        List<Ingredient> ingredientStock = new List<Ingredient>();
 
-        public int SugarQty
+        public List<Ingredient> IngredientStock
         {
-            get { return sugarStockQty; }
-            set { sugarStockQty = value; }
+            get { return ingredientStock; }
         }
-        public int LemonQty
+
+        public Inventory()
         {
-            get { return lemonStockQty; }
-            set { lemonStockQty = value; }
+            InitializeStockIngredients();
         }
-        public int IceCubeQty
+
+        private void InitializeStockIngredients()
         {
-            get { return icecubeStockQty; }
-            set { icecubeStockQty = value; }
+            ingredientStock.Add(new Lemon { IngredientName = "Lemons", IngredientQty = 0 });
+            ingredientStock.Add(new Sugar { IngredientName = "Sugar", IngredientQty = 0 });
+            ingredientStock.Add(new Cup { IngredientName = "Cups", IngredientQty = 0 });
+            ingredientStock.Add(new IceCube { IngredientName = "IceCubes", IngredientQty = 0 });
         }
-        public int CupsQty
+
+        
+        public void StoreItemInInventory(int ingredientSelection, List<Ingredient> input)
         {
-            get { return cupsStockQty; }
-            set { cupsStockQty = value; }
+            if (IngredientStock[ingredientSelection].IngredientName == input[ingredientSelection].IngredientName)
+            {
+                IngredientStock[ingredientSelection].IngredientQty += input[ingredientSelection].IngredientQty;
+            }
+            
         }
+
+
     }
 }

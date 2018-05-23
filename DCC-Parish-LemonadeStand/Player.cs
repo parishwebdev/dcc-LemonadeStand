@@ -11,6 +11,7 @@ namespace DCC_Parish_LemonadeStand
         private string playerName;
         private double wallet;
         private double startingCash = 20.00;
+        private Inventory playerInvent = new Inventory();
         
         public string PlayerName
         {
@@ -20,9 +21,15 @@ namespace DCC_Parish_LemonadeStand
         public double StartingWallet { get { return startingCash; } }
         public double Wallet { get { return wallet; } set { wallet = value; } }
 
+        public Inventory PlayerInvent
+        {
+            get { return playerInvent; }
+            set { playerInvent = value; }
+        }
+
         public Player()
         {
-
+            
         }
 
         public string RetrievePlayerName()
