@@ -29,11 +29,15 @@ namespace DCC_Parish_LemonadeStand
         }
 
         
-        public void StoreItemInInventory(int ingredientSelection, List<Ingredient> input)
+        public void StoreItemInInventory(int ingredientSelection, List<Ingredient> supplier)
         {
-            if (IngredientStock[ingredientSelection].IngredientName == input[ingredientSelection].IngredientName)
+            if (IngredientStock[ingredientSelection - 1].IngredientName == supplier[ingredientSelection - 1].IngredientName)
             {
-                IngredientStock[ingredientSelection].IngredientQty += input[ingredientSelection].IngredientQty;
+                IngredientStock[ingredientSelection - 1].IngredientQty += supplier[ingredientSelection - 1].IngredientQty;
+            }
+            else
+            {
+                UserInterface.OutputText("Invalid Ingredient");
             }
             
         }

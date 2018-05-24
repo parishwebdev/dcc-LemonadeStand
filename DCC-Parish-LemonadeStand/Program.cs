@@ -11,19 +11,21 @@ namespace DCC_Parish_LemonadeStand
         static void Main(string[] args)
         {
             Game g = new Game();
-            // g.SetupGame();
 
-            UserInterface.DisplayPlayerInventory(g.Player.PlayerInvent.IngredientStock);
+            /*UserInterface.DisplayPlayerInventory(g.Player.PlayerInvent.IngredientStock);
             Store.InitalizeStoreIngredients();
-            g.Player.PlayerInvent.StoreItemInInventory(1,Store.StoreIngredientInfo);
-            g.Player.PlayerInvent.StoreItemInInventory(1, Store.StoreIngredientInfo);
-            g.Player.PlayerInvent.StoreItemInInventory(2, Store.StoreIngredientInfo);
 
+            UserInterface.DisplayWallet(g.Player);
+
+            UserInterface.DisplayPurchaseMenu(Store.StoreIngredientInfo);
+            string selection = UserInterface.GetInput();
+            g.Player.BuyIngrediant(Int32.Parse(selection), Store.StoreIngredientInfo);
 
             UserInterface.DisplayPlayerInventory(g.Player.PlayerInvent.IngredientStock);
+            UserInterface.DisplayWallet(g.Player);*/
 
-
-
+            /*Store.InitalizeStoreIngredients();
+            Console.WriteLine(Store.StoreIngredientInfo.Count);*/
 
 
 

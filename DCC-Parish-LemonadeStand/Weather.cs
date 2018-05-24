@@ -13,19 +13,29 @@ namespace DCC_Parish_LemonadeStand
         double maxTemp = 99;
         double currentTemp;
         string currentCondition;
-
+        private List<Weather> actualWeather= new List<Weather>();
         public Weather(Random rTemp)
         {
+            
             GenerateWeather(rTemp);
+            
+        }
+        public Weather(int numDays,Random rand)
+        {
+            CreateInitalWeather(numDays, rand);
+            GenerateForecast(rand);
+           
         }
 
         public double MinTemp
         {
-            get { return minTemp; } set { minTemp = value; }
+            get { return minTemp; }
+            set { minTemp = value; }
         }
         public double MaxTemp
         {
-            get { return maxTemp; } set { maxTemp = value; }
+            get { return maxTemp; }
+            set { maxTemp = value; }
         }
         public double CurrentTemp
         {
@@ -57,118 +67,104 @@ namespace DCC_Parish_LemonadeStand
                 weatherTypes = value;
             }
         }
-        public string CurrentCondition { get { return currentCondition; } set{ currentCondition = value; } }
+        public string CurrentCondition { get { return currentCondition; } set { currentCondition = value; } }
 
-        private List<Weather> forecast;
-        public List<Weather> Forecast
-        {
-            get
-            {
-                return forecast;
-            }
-            set
-            {
-                forecast = value;
-            }
-        }
-        private List<Weather> actualWeather;
+
+
         public List<Weather> ActualWeather
         {
             get
             {
                 return actualWeather;
             }
+            set
+            {
+                actualWeather = value;
+            }
         }
 
 
-        public void SetCurrentTemp(double minTemp, double maxTemp, Random rTemp)
+        public void SetCurrentTemp(double minTemp, double maxTemp, Random rTemperature)
         {
-            currentTemp = rTemp.Next((int)minTemp, (int)maxTemp);
+            CurrentTemp = rTemperature.Next((int)minTemp, (int)maxTemp);
         }
         public void SetCurrentCondition(Random rCondition)
         {
-            currentCondition = weatherTypes[rCondition.Next(0, WeatherTypes.Count)];
+            CurrentCondition = weatherTypes[rCondition.Next(0, WeatherTypes.Count)];
         }
         public void GenerateWeather(Random rand)
         {
-            SetCurrentTemp(minTemp,maxTemp, rand);
+            SetCurrentTemp(minTemp, maxTemp, rand);
             SetCurrentCondition(rand);
+            
         }
 
-        //Forecast
-        /*
-         Public void GetCurrentDayForecast(){ };
-          */
 
-        public void CreateInitalWeather(int numDays,Random rTemp)
+        public void CreateInitalWeather(int numDays, Random rTemp)
         {
-            List<Weather> weatherList = new List<Weather>();
+
             for (int i = 0; i < numDays; i++)
             {
-                weatherList.Add(new Weather(rTemp));
+                ActualWeather.Add(new Weather(rTemp));
             }
-           actualWeather = weatherList;
+            
         }
 
         public void GenerateForecast(Random rand)
         {
-            forecast = actualWeather;
-            for (int i = 0; i < ActualWeather.Count; i++)
-            {
 
-                AlterTempForForecast(rand, forecast[i]);
-                AlterConditionForForecast(rand, forecast[i]);
+                AlterTempForForecast(rand, ActualWeather);
+                AlterConditionForForecast(rand, ActualWeather);
+
+        }
+        public void AlterTempForForecast(Random rand, List<Weather> w)
+        {
+
+            for (int i = 0; i < w.Count; i++)
+            {
+                int variation = rand.Next(1, 2);
+                switch (variation)
+                {
+                    case 1:
+                       w[i].CurrentTemp = Math.Round(w[i].currentTemp * 0.90);
+                        break;
+                    case 2:
+                        w[i].CurrentTemp = Math.Round(w[i].currentTemp * 1.10);
+                        break;
+                    default:
+                        w[i].CurrentTemp *= 1;
+                        break;
+                }
+            }
+        }
+        public void AlterConditionForForecast(Random rand, List<Weather> w)
+        {
+            for (int i = 0; i < w.Count; i++)
+            {
+                int variation = rand.Next(0, 8);
+                switch (variation)
+                {
+                    case 0:
+                    case 1:
+                    case 3:
+                    case 7:
+                        w[i].CurrentCondition = WeatherTypes[0];
+                        break;
+                    case 2:
+                    case 4:
+                    case 8:
+                        w[i].CurrentCondition = WeatherTypes[1];
+                        break;
+                    case 5:
+                    case 6:
+                        w[i].CurrentCondition = WeatherTypes[2];
+                        break;
+                    default:
+                        w[i].CurrentCondition = CurrentCondition;
+                        break;
+                }
             }
             
-        }
-        public void AlterTempForForecast(Random rand, Weather w)
-        {
-            int variation = rand.Next(0, 3);
-            switch (variation)
-            {
-                case 1:
-                   w.CurrentTemp = Math.Round(w.currentTemp * 0.90);
-                   break;
-                case 2:
-                    w.CurrentTemp = Math.Round(w.currentTemp * 1.10); 
-                    break;
-                case 0:
-                default:
-                    w.CurrentTemp *= 1;
-                   break;
-            }
-        }
-        public void AlterConditionForForecast(Random rand, Weather w)
-        {
-            int variation = rand.Next(0, 8);
-            switch (variation)
-            {
-                case 1:
-                case 3:
-                case 7:
-                    w.CurrentCondition = WeatherTypes[0];
-                    break;
-                case 2:
-                case 4:
-                case 8:
-                    w.CurrentCondition = WeatherTypes[1];
-                    break;
-                case 5:
-                case 6:
-                    w.CurrentCondition = WeatherTypes[2];
-                    break;
-                case 0:
-                default:
-                    w.CurrentCondition = CurrentCondition;
-                    break;
-            }
-        }
-        public void DisplayForecastByNumDays(int numDaysToDisplay)
-        {
-            for (int j = 0; j < numDaysToDisplay; j++)
-            {
-                UserInterface.OutputText(j + 1 + ") " + Forecast[j].CurrentCondition + " " + Forecast[j].CurrentTemp);
-            }
         }
 
     }

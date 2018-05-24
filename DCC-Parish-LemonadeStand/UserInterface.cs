@@ -19,7 +19,7 @@ namespace DCC_Parish_LemonadeStand
             return result;
         }
         //Displaying Specfics
-        public static string DisplayDayNum(List<int> dayNums)
+        public static void DisplayDayNum(List<int> dayNums)
         {
             string result = "How many days do you want to play? ";
             for (int i = 0; i < dayNums.Count; i++)
@@ -27,7 +27,7 @@ namespace DCC_Parish_LemonadeStand
                 result += "(" + dayNums[i] + ") days ";
             }
 
-            return result;
+            OutputText(result);
         }
         public static void DisplayPlayerInventory(List<Ingredient> inventory)
         {
@@ -38,6 +38,50 @@ namespace DCC_Parish_LemonadeStand
             }
             OutputText(result);
         }
+
+        public static void DisplayWallet(Player player)
+        {
+            OutputText("Wallet: $" + DoubleToString(player.Wallet));
+        }
+        private static string DoubleToString(double doubleToConvert)
+        {
+            return doubleToConvert.ToString();
+        }
+
+
+        public static void DisplayPurchaseMenu(List<Ingredient> supplier)
+        {
+            string purchaseMenu = "Purchase Menu: ";
+            for (int i = 0; i < supplier.Count; i++)
+            {
+                purchaseMenu += (i+1) + ") " + supplier[i].IngredientName + " - $" + supplier[i].IngedientPrice + " ";
+            }
+            purchaseMenu += " " + (supplier.Count + 1) + ") - Go Back";
+            OutputText(purchaseMenu);
+        }
+
+        public static void DisplayStringMenu(List<String> menu,string menuName)
+        {
+            string mainMenu = menuName + " Menu: ";
+            for (int i = 0; i < menu.Count; i++)
+            {
+                mainMenu += (i+1) + ") " + menu[i] + " ";
+            }
+            OutputText(mainMenu);
+        }
+
+        public static void DisplayWeatherByNumDays(int numDaysToDisplay, List<Weather> weather)
+        {
+            for (int j = 0; j < numDaysToDisplay; j++)
+            {
+                OutputText(weather[j].CurrentCondition + " " + weather[j].CurrentTemp);
+            }
+        }
+        public static void DisplaySingleWeather(Weather weather)
+        {
+            OutputText(weather.CurrentCondition + " " + weather.CurrentTemp);
+        }
+
 
     }
 }
