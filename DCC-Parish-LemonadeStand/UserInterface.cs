@@ -70,17 +70,42 @@ namespace DCC_Parish_LemonadeStand
             OutputText(mainMenu);
         }
 
-        public static void DisplayWeatherByNumDays(int numDaysToDisplay, List<Weather> weather)
+        /* For two methods below add if statement with daycounter to make sure if not first day (the days reflect that) */
+
+        public static void DisplayWeatherByNumDays(int numDaysToDisplay, List<Weather> weather, int dayCounter)
         {
-            for (int j = 0; j < numDaysToDisplay; j++)
-            {
-                OutputText(weather[j].CurrentCondition + " " + weather[j].CurrentTemp);
-            }
+
+                if ( (weather.Count - dayCounter) < numDaysToDisplay)
+                {
+                    for (int j =  dayCounter; j < numDaysToDisplay; j++)
+                    {
+                        OutputText(weather[j].CurrentCondition + " " + weather[j].CurrentTemp);
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < numDaysToDisplay; j++)
+                    {
+                        OutputText(weather[j].CurrentCondition + " " + weather[j].CurrentTemp);
+                    }
+                }
         }
-        public static void DisplaySingleWeather(Weather weather)
+        public static void DisplayCurrentWeather(Weather weather, int dayCounter)
         {
             OutputText(weather.CurrentCondition + " " + weather.CurrentTemp);
         }
+        public static void DisplayNextWeather(List<Weather> weatherList, int dayCounter)
+        {
+            if (dayCounter < weatherList.Count-1) {
+                OutputText(weatherList[dayCounter+1].CurrentCondition + " " + weatherList[dayCounter+1].CurrentTemp);
+            }
+            else
+            {
+                OutputText("Last day, no forecast for tomorrow");
+            }
+        }
+
+
 
 
     }

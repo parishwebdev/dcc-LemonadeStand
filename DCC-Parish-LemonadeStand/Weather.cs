@@ -126,10 +126,10 @@ namespace DCC_Parish_LemonadeStand
                 switch (variation)
                 {
                     case 1:
-                       w[i].CurrentTemp = Math.Round(w[i].currentTemp * 0.90);
+                       w[i].CurrentTemp = Math.Round(w[i].currentTemp * 0.95);
                         break;
                     case 2:
-                        w[i].CurrentTemp = Math.Round(w[i].currentTemp * 1.10);
+                        w[i].CurrentTemp = Math.Round(w[i].currentTemp * 1.05);
                         break;
                     default:
                         w[i].CurrentTemp *= 1;
