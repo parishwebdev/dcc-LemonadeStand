@@ -41,7 +41,7 @@ namespace DCC_Parish_LemonadeStand
 
         public static void DisplayWallet(Player player)
         {
-            OutputText("Wallet: $" + DoubleToString(player.Wallet));
+            OutputText("Wallet: $" + DoubleToString(player.PlayerInvent.Wallet));
         }
         private static string DoubleToString(double doubleToConvert)
         {
@@ -56,8 +56,30 @@ namespace DCC_Parish_LemonadeStand
             {
                 purchaseMenu += (i+1) + ") " + supplier[i].IngredientName + " - $" + supplier[i].IngedientPrice + " ";
             }
-            purchaseMenu += " " + (supplier.Count + 1) + ") - Go Back";
+            purchaseMenu += " " + (supplier.Count + 1) + ") - Display Player Inventory";
+            purchaseMenu += " " + (supplier.Count + 2) + ") - Go Back";
             OutputText(purchaseMenu);
+        }
+        public static void DisplayRecipeMenu(List<Ingredient> recipe)
+        {
+            string recipeMenu = "Recipe Menu: ";
+            for (int i = 0; i < recipe.Count; i++)
+            {
+                recipeMenu += (i + 1) + " - " + recipe[i].IngredientName + " " + recipe[i].IngredientQty + " | ";
+            }
+            recipeMenu += " " + (recipe.Count + 1) + " - Set Price Per Cup | ";
+            recipeMenu += " " + (recipe.Count + 2) + " - Reset Recipe | ";
+            recipeMenu += " " + (recipe.Count + 3) + " - Go Back";
+            OutputText(recipeMenu);
+        }
+        public static void DisplayRecipe(List<Ingredient> recipeList)
+        {
+            string recipe = "";
+            for (int i = 0; i < recipeList.Count; i++)
+            {
+                recipe +=  recipeList[i].IngredientName + " " + recipeList[i].IngredientQty + " | ";
+            }
+            OutputText(recipe);
         }
 
         public static void DisplayStringMenu(List<String> menu,string menuName)
@@ -70,7 +92,6 @@ namespace DCC_Parish_LemonadeStand
             OutputText(mainMenu);
         }
 
-        /* For two methods below add if statement with daycounter to make sure if not first day (the days reflect that) */
 
         public static void DisplayWeatherByNumDays(int numDaysToDisplay, List<Weather> weather, int dayCounter)
         {
@@ -105,7 +126,12 @@ namespace DCC_Parish_LemonadeStand
             }
         }
 
-
+        public static int RetrieveIngredientRecipe(int ingredientSelected, List<Ingredient> ingredients)
+        {
+            UserInterface.OutputText("Please amount of " + ingredients[ingredientSelected - 1].IngredientName + " to add per pitcher");
+            int userIngrediantQuantity = Int32.Parse(UserInterface.GetInput());
+            return userIngrediantQuantity;
+        }
 
 
     }

@@ -17,7 +17,7 @@ namespace DCC_Parish_LemonadeStand
 
 
         public List<String> MainOptions { get { return mainOptions; } }
-        public List<String> WeatherOptions { get { return weatherOptions; } set { weatherOptions = value; } }
+        public List<String> WeatherOptions { get { return weatherOptions; } }
         public List<Ingredient> Supplier { get { return supplier; } set { supplier = value; } }
         public Player Player { get { return player; } set { player = value; } }
         public Weather Weather { get { return weather; } set { weather = value; } }
@@ -37,41 +37,90 @@ namespace DCC_Parish_LemonadeStand
         //Menus
         public void DayMainMenu(int currentDay)
         {
-            int selection = RetrieveMainMenuInput();
+            int selection = RetrieveMainMenuInput(currentDay);
             switch (selection)
             {
                 case 1:
                     PurchaseMenu(currentDay);
                     break;
                 case 2:
-                    //RecipeMenu()
+                    RecipeMenu(currentDay);
                     break;
                 case 3:
                     WeatherMenu(currentDay);
                     break;
                 case 4:
-                    //Day method
+                    SellLemonade();
+                    //Console.Clear();
                     break;
             }
+        }
+        public void SellLemonade()
+        {
+            //new Customer()
+            int numberOfCustomers = 50;//numofcustmers
+            Player.PlayerInvent.InventoryAlter(numberOfCustomers);//numofcustmers
+            
+
         }
         public void PurchaseMenu(int dayCounter)
         {
             int selection = RetrievePurchaseMenuInput();
-
-            while (selection != (Supplier.Count) + 1)
+            switch (selection)
             {
-                Player.BuyIngrediant(selection, Supplier);
-
-                UserInterface.DisplayPlayerInventory(Player.PlayerInvent.IngredientStock);
-                UserInterface.DisplayWallet(player);
-
-                selection = RetrievePurchaseMenuInput();
-
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    Player.PlayerInvent.BuyIngrediant(selection, Supplier);
+                    InventoryStatus();
+                break;
+                case 5:
+                    InventoryStatus();
+                break;
+                case 6:
+                    Console.Clear();
+                    DayMainMenu(dayCounter);
+                break;
             }
-            if (selection == (Supplier.Count) + 1)
+            if (selection == 1 || selection == 2 || selection == 3 || selection == 4 || selection == 5)
             {
-                DayMainMenu(dayCounter);
+                PurchaseMenu(dayCounter); 
             }
+        }
+        private void InventoryStatus()
+        {
+            UserInterface.DisplayPlayerInventory(Player.PlayerInvent.IngredientStock);
+            UserInterface.DisplayWallet(player);
+        }
+        public void RecipeMenu(int dayCounter)
+        {
+            int selection = RetrieveRecipeMenuInput();
+
+            switch (selection)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    Player.ConfigureRecipe(selection);
+                break;
+                case 4:
+                    UserInterface.DisplayRecipe(Player.PlayerInvent.RecipeStock);
+                    Player.PlayerInvent.ConfigurePricePerCup();
+                break;
+                case 5:
+                    Player.PlayerInvent.InitalizeRecipeIngredients();
+                break;
+                case 6:
+                    Console.Clear();
+                    DayMainMenu(dayCounter);
+                break;
+            }
+            if (selection == 1 || selection == 2 || selection == 3 || selection == 4 || selection == 5)
+            {
+                RecipeMenu(dayCounter);
+            }
+
         }
         public void WeatherMenu(int dayCounter)
         {
@@ -88,6 +137,7 @@ namespace DCC_Parish_LemonadeStand
                     UserInterface.DisplayWeatherByNumDays(Weather.ActualWeather.Count, Weather.ActualWeather,dayCounter);
                     break;
                 case 4:
+                    Console.Clear();
                     DayMainMenu(dayCounter);
                     break;
 
@@ -102,9 +152,9 @@ namespace DCC_Parish_LemonadeStand
 
         //methods for input
 
-        private int RetrieveMainMenuInput()
+        private int RetrieveMainMenuInput(int dayCounter)
         {
-            UserInterface.DisplayStringMenu(MainOptions, "Main");
+            UserInterface.DisplayStringMenu(MainOptions, "(Day " + (dayCounter + 1 ).ToString() + ") Main");
             int selection = Int32.Parse(UserInterface.GetInput());
             return selection;
         }
@@ -114,12 +164,20 @@ namespace DCC_Parish_LemonadeStand
             int selection = Int32.Parse(UserInterface.GetInput());
             return selection;
         }
+        private int RetrieveRecipeMenuInput()
+        {
+            UserInterface.DisplayRecipeMenu(Player.PlayerInvent.RecipeStock);
+            int selection = Int32.Parse(UserInterface.GetInput());
+            return selection;
+        }
         private int RetrieveWeatherMenuInput()
         {
             UserInterface.DisplayStringMenu(WeatherOptions, "Weather");
             int selection = Int32.Parse(UserInterface.GetInput());
             return selection;
         }
+
+        
 
     }
 }
