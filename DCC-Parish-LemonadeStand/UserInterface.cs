@@ -128,11 +128,25 @@ namespace DCC_Parish_LemonadeStand
 
         public static int RetrieveIngredientRecipe(int ingredientSelected, List<Ingredient> ingredients)
         {
-            UserInterface.OutputText("Please amount of " + ingredients[ingredientSelected - 1].IngredientName + " to add per pitcher");
+            UserInterface.OutputText("Please amount of " + ingredients[ingredientSelected - 1].IngredientName + " to add per pitcher: ");
             int userIngrediantQuantity = Int32.Parse(UserInterface.GetInput());
             return userIngrediantQuantity;
         }
 
+
+        public static void DisplayDayResults(Player player, double moneyEarned)
+        {
+           OutputText("Today's Results: " + player.PlayerName +  " made $" + moneyEarned + " \r\n" +
+                "Current inventory: \r\n$" + player.PlayerInvent.Wallet);
+            for (int i = 0; i < player.PlayerInvent.IngredientStock.Count; i++)
+            {
+                OutputText(player.PlayerInvent.IngredientStock[i].IngredientQty + " " + player.PlayerInvent.IngredientStock[i].IngredientName);
+            }
+        }
+        public static void DisplayGameResults(Player player)
+        {
+            OutputText(player.PlayerName + "'s game score is: " + player.Score);
+        }
 
     }
 }

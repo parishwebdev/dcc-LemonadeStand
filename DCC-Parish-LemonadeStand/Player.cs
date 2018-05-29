@@ -10,7 +10,13 @@ namespace DCC_Parish_LemonadeStand
     {
         private string playerName;
         private Inventory playerInvent = new Inventory();
-        
+        private double score;
+        public double Score
+        {
+            get { return score; }
+            set { score = value; }
+        }
+
         public string PlayerName
         {
             get { return playerName; } set { playerName = value; }

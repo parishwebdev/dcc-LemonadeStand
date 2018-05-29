@@ -17,7 +17,7 @@ namespace DCC_Parish_LemonadeStand
         private int numberDaysLength;
         private List<Day> gameDays = new List<Day>();
         private Weather weather;
-
+        private double gameProfit;
 
         public Random Rand { get{ return rand; } set { rand = value ;} }
 
@@ -28,7 +28,7 @@ namespace DCC_Parish_LemonadeStand
         public int NumberDaysLength { get { return numberDaysLength; } set{ numberDaysLength = value;} }
 
         public List<Day> GameDays { get { return gameDays; } set {  gameDays = value; } }
-
+        public double GameProfit { get { return gameProfit; } set { gameProfit = value; } }
 
         public Player Player { get { return player; } }
         public Weather Weather { get { return weather; } }
@@ -52,7 +52,7 @@ namespace DCC_Parish_LemonadeStand
         }
         public void RunGame()
         {
-            TraverseDay();
+            TraverseDays();
         }
         private void RetrieveNumDayInput()
         {
@@ -67,15 +67,20 @@ namespace DCC_Parish_LemonadeStand
                 GameDays.Add(new Day(Rand,Player,Weather));
             }
         }
-        public void TraverseDay()
+        public void TraverseDays()
         {
             for (int i = 0; i < GameDays.Count; i++)
             {
                 GameDays[i].RunDay(i);
-                //Console.WriteLine(i);
+                GameProfit += GameDays[i].DayProfit;
             }
+            SetGameScore(GameProfit, Player);
+            UserInterface.DisplayGameResults(Player);
         }
 
-
+        private void SetGameScore(double gameProfit, Player player)
+        {
+            player.Score = gameProfit;
+        }
     }
 }

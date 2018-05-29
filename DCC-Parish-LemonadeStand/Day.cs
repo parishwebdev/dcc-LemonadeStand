@@ -14,13 +14,17 @@ namespace DCC_Parish_LemonadeStand
         private Weather weather;
         private Random rand;
         private Player player;
-
+        private double dayWallet;
+        private double dayProfit;
 
         public List<String> MainOptions { get { return mainOptions; } }
         public List<String> WeatherOptions { get { return weatherOptions; } }
         public List<Ingredient> Supplier { get { return supplier; } set { supplier = value; } }
         public Player Player { get { return player; } set { player = value; } }
         public Weather Weather { get { return weather; } set { weather = value; } }
+        public double DayWallet { get { return dayWallet; } set { dayWallet = value; } }
+        public double DayProfit { get { return dayProfit; } set { dayProfit = value; } }
+        public Random Rand { get { return rand; } set { rand = value; } }
 
         public Day(Random rand, Player player,Weather weather)
         {
@@ -50,18 +54,32 @@ namespace DCC_Parish_LemonadeStand
                     WeatherMenu(currentDay);
                     break;
                 case 4:
-                    SellLemonade();
+                    SellLemonade(currentDay);
                     //Console.Clear();
                     break;
             }
         }
-        public void SellLemonade()
+        public void SellLemonade(int currentDay)
         {
-            //new Customer()
-            int numberOfCustomers = 50;//numofcustmers
-            Player.PlayerInvent.InventoryAlter(numberOfCustomers);//numofcustmers
-            
+            Customer cust = new Customer(Weather.ActualWeather[currentDay],Rand);
+            int numberOfCustomers = RetrieveWillingCustomers(cust, Weather.ActualWeather[currentDay], Rand);
+            Player.PlayerInvent.InventoryAlter(numberOfCustomers);
+            DayProfit = SetDayProfit(DayWallet, Player.PlayerInvent.Wallet);
+            UserInterface.DisplayDayResults(Player, DayProfit); 
 
+        }
+        public int RetrieveWillingCustomers(Customer cust, Weather weather, Random rand)
+        {
+            cust.Customers = cust.NumberOfPotentialCustomers(weather, rand);
+            cust.Customers = cust.ChooseToBuyLemonade(weather, rand, cust.Customers, Player.PlayerInvent);
+            cust.Customers = cust.RemoveTheDissatifiedCustomers(cust.Customers);
+            return cust.Customers.Count();
+        }
+        private double SetDayProfit(double dayWallet, double resultingWallet)
+        {
+            double profit;
+            profit = resultingWallet - dayWallet;
+            return profit;
         }
         public void PurchaseMenu(int dayCounter)
         {
@@ -74,6 +92,7 @@ namespace DCC_Parish_LemonadeStand
                 case 4:
                     Player.PlayerInvent.BuyIngrediant(selection, Supplier);
                     InventoryStatus();
+                    DayWallet = Player.PlayerInvent.Wallet;
                 break;
                 case 5:
                     InventoryStatus();
