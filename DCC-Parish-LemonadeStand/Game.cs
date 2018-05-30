@@ -11,7 +11,7 @@ namespace DCC_Parish_LemonadeStand
         private Random rand;
 
         private Player player = new Player();
-        private List<int> numberGameDays = new List<int> { 7, 14, 30 };
+        private List<string> numberGameDays = new List<string> { "7", "14", "30" };
         
         private string gameInstructions = "Instruction for game in beginning";
         private int numberDaysLength;
@@ -23,7 +23,7 @@ namespace DCC_Parish_LemonadeStand
 
         public string GameInstructions { get { return gameInstructions; } set { gameInstructions = value; } }
 
-        public List<int> NumberGameDays { get { return numberGameDays; } set { numberGameDays = value;} }
+        public List<string> NumberGameDays { get { return numberGameDays; } set { numberGameDays = value;} }
 
         public int NumberDaysLength { get { return numberDaysLength; } set{ numberDaysLength = value;} }
 
@@ -57,7 +57,35 @@ namespace DCC_Parish_LemonadeStand
         private void RetrieveNumDayInput()
         {
             UserInterface.DisplayDayNum(numberGameDays);
-            NumberDaysLength = Int32.Parse(UserInterface.GetInput());
+            string choice = UserInterface.GetInput();
+            if (ValidateGameDays(choice, NumberGameDays))
+            {
+                NumberDaysLength = Int32.Parse(choice);
+            }
+            else
+            {
+                RetrieveNumDayInput();
+            }
+            
+        }
+        private bool ValidateGameDays(string input, List<string> list)
+        {
+            if (input == "" || input == null)
+            {
+                UserInterface.OutputText("Please enter a value in: ");
+                return false;
+            }
+            if (int.TryParse(input, out int n) == false)
+            {
+                UserInterface.OutputText("Please enter a number in: ");
+                return false;
+            }
+            if (NumberGameDays.Contains(input) == false)
+            {
+                UserInterface.OutputText("Please enter the corrert number in: ");
+                return false;
+            }
+            return true;
         }
 
         private void CreateGameDays(int numDaysLength)

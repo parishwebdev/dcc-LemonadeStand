@@ -38,10 +38,34 @@ namespace DCC_Parish_LemonadeStand
         public string RetrievePlayerName()
         {
             UserInterface.OutputText("Enter your name: ");
-            PlayerName = UserInterface.GetInput();
-            return PlayerName;
+            string output = UserInterface.GetInput();
+            if (ValidateNameInput(output))
+            {
+                PlayerName = output;
+                return PlayerName;
+
+            }
+            else
+            {
+                return RetrievePlayerName();
+            }
         }
-        
+        private Boolean ValidateNameInput(string input)
+        {
+            if (input == "" || input == null)
+            {
+                UserInterface.OutputText("Please enter a value in: ");
+                return false;
+            }
+            if (int.TryParse(input, out int n))
+            {
+                UserInterface.OutputText("Please don't enter a number in: ");
+                return false;
+            }
+
+            return true;
+        }
+
         public void ConfigureRecipe(int selection)
         {
             int ingrediantsToAdd = PlayerInvent.GetIngrediantQtyInput(selection);

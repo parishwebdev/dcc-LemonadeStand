@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DCC_Parish_LemonadeStand
 {
-    class Inventory
+     class Inventory
     {
         List<Ingredient> ingredientStock;
         List<Ingredient> recipeStock;
-        double pricePerCup;
+        double pricePerCup = 0.25;
         private double wallet = 20.00;
 
         public List<Ingredient> IngredientStock
@@ -30,7 +30,12 @@ namespace DCC_Parish_LemonadeStand
             InitializeStockIngredients();
             InitalizeRecipeIngredients();
         }
-
+        /*
+         2nd Solid Comment:
+         With both ingredient list the child can be used in the exact same way of the parent class.
+         In the lists instead of creating new Ingrediants{} you can subsitute the child ingredient classes
+         for the parent ingredient
+         */
         private void InitializeStockIngredients()
         {
             ingredientStock = new List<Ingredient>();
@@ -67,7 +72,7 @@ namespace DCC_Parish_LemonadeStand
         {
             UserInterface.OutputText("Please enter price per cup(select value between 25¢ and $1.50)");
             string input = UserInterface.GetInput();
-            double price = Double.Parse(input);
+            double price = PriceSanitizer(input);
             if (price > 1.5 || price < .25)
             {
                 UserInterface.OutputText("Please enter price in the correct range");
@@ -75,11 +80,23 @@ namespace DCC_Parish_LemonadeStand
             }
             else
             {
-                PricePerCup = price;
+                if (price == 0.00)
+                {
+                    price = 0.25;
+                }
+                else
+                {
+                    PricePerCup = price;
+                }
             }
         }
 
-
+        private double PriceSanitizer(string input)
+        {
+            double.TryParse(input, out double inputValue);
+            return inputValue;
+        }
+        
         public void AddItemToRecipe(int ingrediantSelection, int amount)
         {
             for (int i = 0; i <= RecipeStock.Count; i++)
@@ -94,7 +111,9 @@ namespace DCC_Parish_LemonadeStand
         public int GetIngrediantQtyInput(int selection)
         {
             int userIngrediantQuantity = 0;
-            userIngrediantQuantity = UserInterface.RetrieveIngredientRecipe(selection, RecipeStock);
+
+            string outputQty = UserInterface.RetrieveIngredientRecipe(selection, RecipeStock);
+            userIngrediantQuantity = IntValidator(outputQty);
 
             if (userIngrediantQuantity == 0)
             {
@@ -109,13 +128,15 @@ namespace DCC_Parish_LemonadeStand
                 }
                 else
                 {
-                    UserInterface.OutputText("Not enough " + RecipeStock[selection].IngredientName + " currently in your inventory");
                     return GetIngrediantQtyInput(selection);
                 }
             }
         }
-
-
+        private int IntValidator(string input)
+        {
+            int.TryParse(input, out int inputValue);
+            return inputValue;
+        }
         private bool ValidateStockQty(int amount, int selection)
         {
             for (int i = 0; i < IngredientStock.Count; i++)
@@ -124,14 +145,14 @@ namespace DCC_Parish_LemonadeStand
                 {
                     if (amount > IngredientStock[i].IngredientQty)
                     {
+                        UserInterface.OutputText("Not enough " + RecipeStock[selection].IngredientName + " currently in your inventory");
                         return false;
                     }
                 }
             }
             return true;
         }
-
-
+        
         public void InventoryAlter(int customersWhoBought)
         {
             while (StockAvailability() == true && customersWhoBought > 0)
@@ -154,6 +175,7 @@ namespace DCC_Parish_LemonadeStand
             }
             return true;
         }
+
         private void RemoveFromInventory()
         {
             for (int i = 0; i < RecipeStock.Count; i++)
@@ -177,6 +199,7 @@ namespace DCC_Parish_LemonadeStand
         {
             Wallet -= supplier[ingredientSelection - 1].IngedientPrice;
         }
+
         public void BuyIngrediant(int ingredientSelection, List<Ingredient> supplier)
         {
             if (VerifyIngrediantPurchase(ingredientSelection, supplier))

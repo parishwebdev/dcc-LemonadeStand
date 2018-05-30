@@ -19,7 +19,7 @@ namespace DCC_Parish_LemonadeStand
             return result;
         }
         //Displaying Specfics
-        public static void DisplayDayNum(List<int> dayNums)
+        public static void DisplayDayNum(List<string> dayNums)
         {
             string result = "How many days do you want to play? ";
             for (int i = 0; i < dayNums.Count; i++)
@@ -126,10 +126,10 @@ namespace DCC_Parish_LemonadeStand
             }
         }
 
-        public static int RetrieveIngredientRecipe(int ingredientSelected, List<Ingredient> ingredients)
+        public static string RetrieveIngredientRecipe(int ingredientSelected, List<Ingredient> ingredients)
         {
             UserInterface.OutputText("Please amount of " + ingredients[ingredientSelected - 1].IngredientName + " to add per pitcher: ");
-            int userIngrediantQuantity = Int32.Parse(UserInterface.GetInput());
+            string userIngrediantQuantity = UserInterface.GetInput();
             return userIngrediantQuantity;
         }
 
@@ -145,7 +145,7 @@ namespace DCC_Parish_LemonadeStand
         }
         public static void DisplayGameResults(Player player)
         {
-            OutputText(player.PlayerName + "'s game score is: " + player.Score);
+            OutputText(player.PlayerName + "'s game score is: " + player.Score + " pts");
         }
 
     }

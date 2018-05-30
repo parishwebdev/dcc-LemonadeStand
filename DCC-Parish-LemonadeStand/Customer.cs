@@ -58,7 +58,7 @@ namespace DCC_Parish_LemonadeStand
         {
             int priceInfluencer = Convert.ToInt32(weather.CurrentTemp * (playerInvt.PricePerCup / 10));
 
-            if(rand.Next(0,priceInfluencer) < 3)
+            if(rand.Next(0,priceInfluencer) < 5)
             {
                 return true;
             }
