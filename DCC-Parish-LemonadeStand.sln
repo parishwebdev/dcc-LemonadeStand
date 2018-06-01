@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCC-Parish-LemonadeStand", "DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand.csproj", "{089722E5-9748-4DDD-AA0C-4F94B794DC02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCC-Parish-LemonadeStand-Test", "DCC-Parish-LemonadeStand-Test\DCC-Parish-LemonadeStand-Test.csproj", "{6125A2ED-C84A-4F71-A86C-E7B494740B07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{089722E5-9748-4DDD-AA0C-4F94B794DC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{089722E5-9748-4DDD-AA0C-4F94B794DC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089722E5-9748-4DDD-AA0C-4F94B794DC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6125A2ED-C84A-4F71-A86C-E7B494740B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6125A2ED-C84A-4F71-A86C-E7B494740B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6125A2ED-C84A-4F71-A86C-E7B494740B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6125A2ED-C84A-4F71-A86C-E7B494740B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

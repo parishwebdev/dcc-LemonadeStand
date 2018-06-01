@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using DCC_Parish_LemonadeStand;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -7,6 +8,7 @@ namespace DCC_Parish_LemonadeStand_Test
     [TestClass]
     public class DayTest
     {
+        /*
         [TestMethod]
         public void Subtract_Wallet_DollarValues_Return_Positive_Profit()
         {
@@ -48,5 +50,24 @@ namespace DCC_Parish_LemonadeStand_Test
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void Get_Input_For_Recipe_Menu()
+        {
+            //Arrange
+            DayUnitTesting day = new DayUnitTesting();
+
+            int expectedResult = 1;
+
+            string input = "1";
+            StringReader stringReader = new StringReader(input);
+            Console.SetIn(stringReader);
+            //Act
+            int actualResult = day.RetrieveWeatherMenuInput();
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        */
+
     }
 }

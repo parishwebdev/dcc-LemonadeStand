@@ -5,3 +5,8 @@ C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-Lemonade
 C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.csproj.CoreCompileInputs.cache
 C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.exe
 C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.pdb
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\EntityFramework.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\EntityFramework.xml
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand\obj\Debug\DCC-Parish-LemonadeStand.csproj.CopyComplete

@@ -1,0 +1,17 @@
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\DCC-Parish-LemonadeStand-Test.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\DCC-Parish-LemonadeStand-Test.pdb
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\DCC-Parish-LemonadeStand.exe
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\DCC-Parish-LemonadeStand.pdb
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\DCC-Parish-LemonadeStand.exe.config
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\obj\Debug\DCC-Parish-LemonadeStand-Test.csprojResolveAssemblyReference.cache
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\obj\Debug\DCC-Parish-LemonadeStand-Test.csproj.CoreCompileInputs.cache
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\obj\Debug\DCC-Parish-LemonadeStand-Test.csproj.CopyComplete
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\obj\Debug\DCC-Parish-LemonadeStand-Test.dll
+C:\Users\Matthew_2\source\repos\DCC\DCC-Parish-LemonadeStand\DCC-Parish-LemonadeStand-Test\obj\Debug\DCC-Parish-LemonadeStand-Test.pdb

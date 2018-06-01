@@ -54,6 +54,11 @@ namespace DCC_Parish_LemonadeStand
         {
             TraverseDays();
         }
+
+        /*****************/
+
+
+         /*****************/
         private void RetrieveNumDayInput()
         {
             UserInterface.DisplayDayNum(numberGameDays);
@@ -104,6 +109,12 @@ namespace DCC_Parish_LemonadeStand
             }
             SetGameScore(GameProfit, Player);
             UserInterface.DisplayGameResults(Player);
+
+            using (var db = new Model1())
+            {
+                db.LemonadeStandScores.Add(new LemonadeStandScore() { Name = Player.PlayerName, GameLength = NumberDaysLength, Score = Convert.ToDecimal(Player.Score) });
+                db.SaveChanges();
+            }
         }
 
         private void SetGameScore(double gameProfit, Player player)

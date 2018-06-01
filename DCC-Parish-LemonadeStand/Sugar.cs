@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DCC_Parish_LemonadeStand
 {
-    class Sugar : Ingredient
+     class Sugar : Ingredient
     {
 
     }
